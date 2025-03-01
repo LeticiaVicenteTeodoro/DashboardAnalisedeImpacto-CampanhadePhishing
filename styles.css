@@ -1,0 +1,100 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Corpo da página */
+body {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Status dos Processos */
+.status-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.status-card {
+    flex: 1;
+    min-width: 100px;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+.green { background: #4CAF50; } /* Verde */
+.yellow { background: #FFC107; } /* Amarelo */
+.blue { background: #2196F3; } /* Azul */
+.black { background: #333; } /* Preto */
+
+/* Layout flexível */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* Cartões */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos do gráfico */
+#chart-container {
+    flex: 2;
+    min-width: 300px;
+}
+
+/* Lista de e-mails */
+#phishing-list {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Títulos dos cartões */
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Ícones */
+.card h2 i {
+    margin-right: 8px;
+}
+
+/* Lista */
+#phishing-list ul {
+    list-style: none;
+}
+
+#phishing-list ul li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+}
