@@ -1,90 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <!-- Fonte e Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <!-- Google Charts -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-</head>
-<body>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+  </head>
+  <body>
+    <div class="header">
+      <a href="#default" class="logo">Dashboard</a>
+    </div>
+    <br />
 
     <div class="container">
+      <!-- Status dos Processos -->
+      <div class="status-container">
+        <div class="status-card blue">
+          <h3>Quantidade de e-mails Enviados:</h3>
+          <p>023</p>
+        </div>
+        <div class="status-card black">
+          <h3>Quantidade de Cliques:</h3>
+          <p>128</p>
+        </div>
+      </div>
 
-        <!-- Status dos Processos -->
-        <div class="status-container">
-            <div class="status-card green">
-                <h3>Responder</h3>
-                <p>065</p>
-            </div>
-            <div class="status-card yellow">
-                <h3>Pendente</h3>
-                <p>040</p>
-            </div>
-            <div class="status-card blue">
-                <h3>Em andamento</h3>
-                <p>023</p>
-            </div>
-            <div class="status-card black">
-                <h3>Total</h3>
-                <p>128</p>
-            </div>
+      <!-- Conteúdo Principal -->
+      <div class="content">
+        <!-- Gráfico "Iniciou x Concluiu o Curso" -->
+        <div class="card" id="chart-container">
+          <h2>
+            <i class="fa-solid fa-chart-column"></i> Iniciou x Concluiu o Curso
+          </h2>
+          <div id="chart_div"></div>
         </div>
 
-        <!-- Conteúdo Principal -->
-        <div class="content">
-            <!-- Gráfico "Iniciou x Concluiu o Curso" -->
-            <div class="card" id="chart-container">
-                <h2><i class="fa-solid fa-chart-column"></i> Iniciou x Concluiu o Curso</h2>
-                <div id="chart_div"></div>
-            </div>
-
-            <!-- Lista de e-mails das pessoas que caíram no phishing -->
-            <div class="card" id="phishing-list">
-                <h2><i class="fa-solid fa-envelope"></i> Emails - Phishing</h2>
-                <ul>
-                    <li>andre@email.com</li>
-                    <li>pedro@email.com</li>
-                    <li>ricardo@email.com</li>
-                    <li>rodrigo@email.com</li>
-                    <li>maria@email.com</li>
-                    <li>jackson@email.com</li>
-                    <li>luiza@email.com</li>
-                </ul>
-            </div>
+        <!-- Lista de e-mails das pessoas que caíram no phishing -->
+        <div class="card" id="phishing-list">
+          <h2>
+            <i class="fa-solid fa-envelope"></i> E-mails que Clicaram no
+            Phishing
+          </h2>
+          <ul>
+            <li>andre@email.com</li>
+            <li>pedro@email.com</li>
+            <li>ricardo@email.com</li>
+            <li>rodrigo@email.com</li>
+            <li>maria@email.com</li>
+            <li>jackson@email.com</li>
+            <li>luiza@email.com</li>
+          </ul>
         </div>
+      </div>
     </div>
 
     <script>
-        // Google Charts - Gráfico de Colunas
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+      // Google Charts - Gráfico de Colunas
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Status', 'Quantidade', { role: 'style' }],
-                ['Iniciou', 100, '#4CAF50'],   // Verde
-                ['Concluiu', 75, '#2196F3']   // Azul
-            ]);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Status", "Quantidade", { role: "style" }],
+          ["Iniciou", 9, "#4CAF50"], // Verde
+          ["Concluiu", 2, "#2196F3"], // Azul
+        ]);
 
-            var options = {
-                title: '',
-                legend: { position: 'none' },
-                bar: { groupWidth: '50%' },
-                vAxis: { minValue: 0 },
-                height: 300
-            };
+        var options = {
+          title: "",
+          legend: { position: "none" },
+          bar: { groupWidth: "50%" },
+          vAxis: { minValue: 0 },
+          height: 300,
+        };
 
-            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
+        var chart = new google.visualization.ColumnChart(
+          document.getElementById("chart_div")
+        );
+        chart.draw(data, options);
+      }
 
-        // Ajusta o gráfico ao redimensionar a tela
-        window.addEventListener('resize', drawChart);
+      // Ajusta o gráfico ao redimensionar a tela
+      window.addEventListener("resize", drawChart);
     </script>
-
-</body>
+  </body>
 </html>
